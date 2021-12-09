@@ -8,6 +8,42 @@
         <title>Document</title>
     </head>
     <body>
-        <div>Hello world</div>
+        <form
+            name="form"
+            action="/action_page.php"
+            onsubmit="return validateForm()"
+            method="post"
+        >
+            <ul>
+                <li>
+                    Book name:
+                    <input
+                        minlength="1"
+                        required="true"
+                        type="text"
+                        name="bookName"
+                    />
+                </li>
+                <li>
+                    Author name:
+                    <input
+                        minlength="3"
+                        required="true"
+                        type="text"
+                        name="authorName"
+                    />
+                </li>
+                <li>
+                    Priority:
+                    <select id="imie">
+                        <option value="m">Detective</option>
+                        <option value="l">Horror</option>
+                        <option value="y">Scy-fi</option>
+                    </select>
+                </li>
+                <li>Category: <input type="number" name="category" /></li>
+            </ul>
+            <input type="submit" value="Submit" />
+        </form>
     </body>
 </html>
