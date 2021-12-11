@@ -4,8 +4,17 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="styles.css" />
         <title>Document</title>
+        <style>
+            .a {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            .a > * {
+                flex-basis: 25%;
+            }
+        </style>
     </head>
     <body>
         <form
@@ -18,6 +27,7 @@
                 <li>
                     Book name:
                     <input
+                        id="bName"
                         minlength="1"
                         required="true"
                         type="text"
@@ -27,6 +37,7 @@
                 <li>
                     Author name:
                     <input
+                        id="aName"
                         minlength="3"
                         required="true"
                         type="text"
@@ -35,15 +46,33 @@
                 </li>
                 <li>
                     Priority:
-                    <select id="imie">
-                        <option value="m">Detective</option>
-                        <option value="l">Horror</option>
-                        <option value="y">Scy-fi</option>
+                    <input
+                        id="priority"
+                        required="true"
+                        max="5"
+                        min="1"
+                        type="number"
+                        name="category"
+                    />
+                </li>
+                <li>
+                    Category:
+                    <select required="true" id="category">
+                        <option value="Detective">Detective</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Scy-fi">Scy-fi</option>
                     </select>
                 </li>
-                <li>Category: <input type="number" name="category" /></li>
             </ul>
-            <input type="submit" value="Submit" />
+            <input
+                type="button"
+                id="submit"
+                value="Submit"
+                onclick="validateForm();"
+            />
         </form>
+
+        <div id="Info" class="a"></div>
+        <script src="index.js"></script>
     </body>
 </html>
