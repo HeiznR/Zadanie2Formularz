@@ -5,28 +5,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <style>
-            .a {
-                display: flex;
-                justify-content: space-around;
-                flex-wrap: wrap;
-            }
-            .a > * {
-                flex-basis: 25%;
-            }
-        </style>
+        <link rel="stylesheet" href="index.css" />
     </head>
     <body>
         <form
             name="form"
             action="/action_page.php"
-            onsubmit="return validateForm()"
             method="post"
+            onsubmit="return validateForm()"
         >
             <ul>
                 <li>
                     Book name:
                     <input
+                        placeholder="al least 1 character"
                         id="bName"
                         minlength="1"
                         required="true"
@@ -37,6 +29,7 @@
                 <li>
                     Author name:
                     <input
+                        placeholder="al least 3 characters"
                         id="aName"
                         minlength="3"
                         required="true"
@@ -68,11 +61,16 @@
                 type="button"
                 id="submit"
                 value="Submit"
-                onclick="validateForm();"
+                onclick="addBook();"
             />
         </form>
 
-        <div id="Info" class="a"></div>
+        <div id="info" class="info">
+            <p>Book name:</p>
+            <p>Author name:</p>
+            <p>Priority:</p>
+            <p>Category:</p>
+        </div>
         <script src="index.js"></script>
     </body>
 </html>

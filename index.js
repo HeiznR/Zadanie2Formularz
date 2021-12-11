@@ -1,14 +1,13 @@
 mass = JSON.parse(localStorage.getItem("mass"));
-let info = {};
 let btnSubmit = document.getElementById("submit");
 let divBookName = document.getElementById("bName");
 let divAuthorName = document.getElementById("aName");
 let divPriority = document.getElementById("priority");
 let divCategory = document.getElementById("category");
-let divInfo = document.getElementById("Info");
+let divInfo = document.getElementById("info");
+const form = document.forms.form;
 window.onload = () => {
     if (mass == null) mass = [];
-
     for (i = 0; i < mass.length; i++) {
         bName = document.createElement("div");
         aName = document.createElement("div");
@@ -22,34 +21,33 @@ window.onload = () => {
     }
 };
 
-const validateForm = () => {
+const addBook = () => {
+    bName = document.createElement("div");
+    aName = document.createElement("div");
+    priority = document.createElement("div");
+    category = document.createElement("div");
     if (!form.checkValidity()) {
-        alert("не заполнено bookname");
+        form.reportValidity();
     } else {
-        info.bookName = divBookName.value;
-        info.authorName = divAuthorName.value;
-        info.priority = divPriority.value;
-        info.category = divCategory.value;
-        mass.push(info);
+        bName.innerHTML = divBookName.value;
+        aName.innerHTML = divAuthorName.value;
+        priority.innerHTML = divPriority.value;
+        category.innerHTML = divCategory.value;
+        divInfo.append(bName, aName, priority, category);
+        mass = JSON.parse(localStorage.getItem("mass"));
+        if (mass == null) mass = [];
+        mass.push({
+            bookName: divBookName.value,
+            authorName: divAuthorName.value,
+            priority: divPriority.value,
+            category: divCategory.value,
+        });
+        localStorage.setItem(`mass`, JSON.stringify(mass));
         divBookName.value = "";
         divAuthorName.value = "";
         divPriority.value = "";
         divCategory.value = 1;
-        mass = JSON.parse(localStorage.getItem("mass"));
-        if (mass == null) mass = [];
-        mass.push(info);
-        localStorage.setItem(`mass`, JSON.stringify(mass));
-        bName = document.createElement("div");
-        aName = document.createElement("div");
-        priority = document.createElement("div");
-        category = document.createElement("div");
-        bName.innerHTML = `${info.bookName}`;
-        aName.innerHTML = `${info.authorName}  `;
-        priority.innerHTML = ` ${info.priority} `;
-        category.innerHTML = ` ${info.category} `;
-
-        divInfo.append(bName, aName, priority, category);
     }
     return false;
 };
-btnSubmit.onclick = validateForm;
+btnSubmit.onclick = addBook;

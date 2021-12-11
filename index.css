@@ -1,0 +1,37 @@
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 600px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+form > ul {
+    align-items: center;
+    justify-content: center;
+}
+form > ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    padding: 10px;
+}
+.info {
+    width: 600px;
+    margin: 0px auto;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+}
+.info > p {
+    font-weight: 600;
+    font-size: 20px;
+}
+.info > * {
+    text-align: center;
+    flex-basis: 25%;
+}
